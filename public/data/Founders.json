@@ -1,0 +1,12 @@
+[
+    {
+      "name": "John Doe",
+      "image_url": "john_doe.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales..."
+    },
+    {
+      "name": "Jane Smith",
+      "image_url": "jane_smith.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales..."
+    }
+  ]

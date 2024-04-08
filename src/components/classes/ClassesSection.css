@@ -1,0 +1,54 @@
+.classes-section {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .classes-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .subject-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .subject-card {
+    width: 200px;
+    height: 100px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .subject-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .subject-card h3 {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  @media(max-width:800px){
+    .subject-card {
+        width: 130px;
+        height: 60px;
+        margin: 5px;
+    }
+
+    .subject-card h3 {
+        font-size: 20px;
+      }
+
+      .classes-section {
+        padding: 30px;
+      }
+      
+  }
+  

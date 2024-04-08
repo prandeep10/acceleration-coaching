@@ -1,0 +1,17 @@
+[
+    {
+      "name": "John Doe",
+      "image_url": "john_doe.jpg",
+      "percentage": 85
+    },
+    {
+      "name": "Jane Smith",
+      "image_url": "jane_smith.jpg",
+      "percentage": 92
+    },
+    {
+      "name": "Michael Johnson",
+      "image_url": "michael_johnson.jpg",
+      "percentage": 88
+    }
+  ]

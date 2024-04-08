@@ -1,0 +1,36 @@
+.hero-container {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero-content {
+    text-align: center;
+    color: #000000;
+  }
+  
+  .hero-content .brand {
+    font-size: 78px;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 24px;
+  }
+  
+  @media(max-width:800px){
+    .hero-content .brand {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+    .description {
+        font-size: 14px;
+      }
+      
+  }

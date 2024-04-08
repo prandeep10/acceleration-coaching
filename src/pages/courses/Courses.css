@@ -1,0 +1,66 @@
+.courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .course-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .course-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    width: 300px;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  .math {
+    background-color: #3498db; /* Blue */
+  }
+  
+  .physics {
+    background-color: #2ecc71; /* Green */
+  }
+  
+  .chemistry {
+    background-color: #e74c3c; /* Red */
+  }
+  
+  .biology {
+    background-color: #9b59b6; /* Purple */
+  }
+  
+  .english {
+    background-color: #f1c40f; /* Yellow */
+  }
+  
+  .social-science {
+    background-color: #e67e22; /* Orange */
+  }
+  
+  @media (max-width: 768px) {
+    .course-cards {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  
+    .course-card {
+      height: 150px;
+      font-size: 18px;
+    }
+  }
+  

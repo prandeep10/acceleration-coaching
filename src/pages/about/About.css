@@ -1,0 +1,131 @@
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Popins', sans-serif;
+  }
+
+  .about-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: 2.2px;
+    word-spacing: 10px;
+    line-height: 2;
+  }
+  
+  .about-section h2,
+  .location-section h3,
+  .gallery-section h3,
+  .founders-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .about-description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .location-section {
+    margin-top: 30px;
+  }
+  
+  .gallery-section {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .photo-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+  }
+  
+  .photo-grid img {
+    width: 370px;
+    height: 320px;
+    margin: 10px;
+  }
+
+  .founders-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+  }
+  
+  .founder {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    width: 700px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .founder img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .founder-details {
+    flex-grow: 1;
+  }
+
+  .founder-details p{
+    padding: 20px;
+    line-height: 2;
+  }
+  
+  .founder-details h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .founder {
+      flex-direction: column;
+      text-align: center;
+      margin-top: 10px;
+      padding: 15px;
+      width: 100%;
+    }
+
+    .about-section{
+      letter-spacing: 2px;
+      word-spacing: 4px;
+      line-height: 1;
+    }
+  
+    .founder img {
+      margin-right: 0px;
+      margin-bottom: 17px;
+    }
+
+    .about-container {
+        padding: 15px;
+      }
+
+    .founder-details p{
+        padding: 0px;
+        text-align: justify;
+      }
+
+      .photo-grid img {
+        width: 320px;
+        height: 300px;
+        margin: 10px;
+      }
+  }
+  

@@ -1,0 +1,46 @@
+.students-container {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .students-container h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .students-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .student-card {
+    width: 250px;
+    margin: 0 20px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .student-details {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .student-details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .student-details p {
+    margin: 0;
+    font-size: 18px;
+  }
+  
