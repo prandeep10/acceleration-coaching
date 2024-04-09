@@ -1,0 +1,43 @@
+/* Admin.css */
+
+.admin-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .upload-section {
+    margin-bottom: 20px;
+  }
+  
+  .upload-section input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .images-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .image-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .image-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .image-item img {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .image-item p {
+    margin-top: 5px;
+  }
+  
+  .image-item button {
+    margin-top: 5px;
+  }
+  

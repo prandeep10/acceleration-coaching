@@ -1,0 +1,45 @@
+/* StudentCrud.css */
+
+.student-crud-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .add-student-section {
+    margin-bottom: 20px;
+  }
+  
+  .add-student-section input[type="text"],
+  .add-student-section input[type="file"],
+  .add-student-section button {
+    margin-bottom: 10px;
+  }
+  
+  .students-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .student-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .student-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .student-item img {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .student-item p {
+    margin-top: 5px;
+  }
+  
+  .student-item button {
+    margin-top: 5px;
+  }
+  

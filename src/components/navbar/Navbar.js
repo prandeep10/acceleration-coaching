@@ -5,24 +5,25 @@ import './Navbar.css'; // Import CSS file for custom styling
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [contactNumber, setContactNumber] = useState('');
   const navbarRef = useRef(null);
 
   useEffect(() => {
-    // Function to close navbar when clicking outside
-    const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    // Add event listener to detect clicks outside the navbar
-    document.addEventListener('mousedown', handleClickOutside);
-
-    // Cleanup function to remove event listener
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    fetchContactNumber();
   }, []);
+
+  const fetchContactNumber = async () => {
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/text');
+      if (!response.ok) {
+        throw new Error('Failed to fetch contact number');
+      }
+      const data = await response.json();
+      setContactNumber(data.contact_number);
+    } catch (error) {
+      console.error('Error fetching contact number:', error);
+    }
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -42,7 +43,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="contact">
-        <span>Contact: <a href="tel:123-456-7890" className="phone">123-456-7890</a></span>
+        <span>Contact: <a href={`tel:${contactNumber}`} className="phone">{contactNumber}</a></span>
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
         <FiMenu />

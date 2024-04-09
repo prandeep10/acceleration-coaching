@@ -1,0 +1,45 @@
+/* FacultyCrud.css */
+
+.faculty-crud-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .add-faculty-section {
+    margin-bottom: 20px;
+  }
+  
+  .add-faculty-section input[type="text"],
+  .add-faculty-section input[type="file"],
+  .add-faculty-section button {
+    margin-bottom: 10px;
+  }
+  
+  .faculty-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .faculty-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .faculty-member {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .faculty-member img {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .faculty-member p {
+    margin-top: 5px;
+  }
+  
+  .faculty-member button {
+    margin-top: 5px;
+  }
+  

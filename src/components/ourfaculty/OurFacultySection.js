@@ -11,7 +11,7 @@ const OurFacultySection = () => {
   }, []);
 
   const fetchData = () => {
-    fetch('http://localhost:3000/api/facultyapi.php')
+    fetch('https://brightcareers-backend.onrender.com/faculty')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch faculty data');
@@ -52,7 +52,7 @@ const OurFacultySection = () => {
       <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={5000} showStatus={false} showThumbs={false} className="carousel-wrapper">
         {facultyData.map((faculty, index) => (
           <div key={index} className="faculty-card">
-            <img src={faculty.image} alt={`Faculty ${index + 1}`} className="faculty-image" />
+            <img src={`https://brightcareers-backend.onrender.com/faculty/${faculty.image}`} alt={`Faculty ${index + 1}`} className="faculty-image" />
             <div className="faculty-details">
               <h3>{faculty.name}</h3>
               <p><strong>Subject:</strong> {faculty.subject}</p>

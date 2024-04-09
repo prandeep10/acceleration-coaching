@@ -12,16 +12,20 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create FormData object to send form data
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
+    // Create an object with form data
+    const formData = {
+      name: name,
+      email: email,
+      message: message
+    };
 
-    // Send POST request to PHP backend
-    fetch('http://localhost:3000/contact-message.php', {
+    // Send POST request to Express backend
+    fetch('https://brightcareers-backend.onrender.com/contact', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     })
     .then(response => {
       if (response.ok) {

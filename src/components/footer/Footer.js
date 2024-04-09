@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
+  const [contactNumber, setContactNumber] = useState('');
+
+  useEffect(() => {
+    fetchContactNumber();
+  }, []);
+
+  const fetchContactNumber = async () => {
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/text');
+      if (!response.ok) {
+        throw new Error('Failed to fetch contact number');
+      }
+      const data = await response.json();
+      setContactNumber(data.contact_number);
+    } catch (error) {
+      console.error('Error fetching contact number:', error);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -12,8 +31,7 @@ const Footer = () => {
         </div>
         <div className="footer-section">
           <h3>Contact Details</h3>
-          <p>info@example.com</p>
-          <p>+1234567890</p>
+          <p>{contactNumber}</p>
         </div>
         <div className="footer-section">
           <h3>Follow Us</h3>

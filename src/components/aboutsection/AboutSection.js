@@ -1,15 +1,32 @@
-import React from 'react';
-import './AboutSection.css'; 
-import aboutImage from './about-image.jpg'; 
+import React, { useState, useEffect } from 'react';
+import './AboutSection.css';
+import aboutImage from './about-image.jpg';
 
 const AboutSection = () => {
+  const [aboutSectionContent, setAboutSectionContent] = useState('');
+
+  useEffect(() => {
+    fetchAboutSectionContent();
+  }, []);
+
+  const fetchAboutSectionContent = async () => {
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/text');
+      if (!response.ok) {
+        throw new Error('Failed to fetch about section content');
+      }
+      const data = await response.json();
+      setAboutSectionContent(data.about_section_content);
+    } catch (error) {
+      console.error('Error fetching about section content:', error);
+    }
+  };
+
   return (
     <section className="about-section-container">
       <div className="about-content">
         <h2>About Us</h2>
-        <p>
-          Welcome to Bright Career Coaching, a premier institute established in 2003 with a steadfast commitment to nurturing academic excellence and fostering holistic growth among students from classes V to XII. At Bright Career Coaching, we believe in the power of education to transform lives and shape futures. With this belief at our core, we strive to provide comprehensive coaching that goes beyond textbooks, instilling in students a passion for learning and a thirst for knowledge. Our team of experienced and dedicated educators is committed to guiding students through their academic journey, helping them build a strong foundation in subjects ranging from Mathematics and Science to Languages and Social Sciences. Through our meticulously crafted curriculum, personalized attention, and innovative teaching methodologies, we empower students to unleash their full potential and achieve academic success.
-        </p>
+        <p>{aboutSectionContent}</p>
       </div>
       <div className="about-image">
         <img src={aboutImage} alt="About" />

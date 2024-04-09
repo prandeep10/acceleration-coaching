@@ -9,7 +9,7 @@ const OurStudentsPage = () => {
   }, []);
 
   const fetchData = () => {
-    fetch('http://localhost:3000/api/studentapi.php')
+    fetch('https://brightcareers-backend.onrender.com/students')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch student data');
@@ -42,7 +42,7 @@ const OurStudentsPage = () => {
       <div className="students-grid">
         {students.map((student, index) => (
           <div key={index} className="student-card">
-            <img src={`http://localhost:3000/${student.image}`} alt={student.name} />
+            <img src={`https://brightcareers-backend.onrender.com/students/${student.image}`} alt={student.name} />
             <div className="student-details">
               <h3>{student.name}</h3>
               <p>Percentage: {student.percentage}%</p>

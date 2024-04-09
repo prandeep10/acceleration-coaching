@@ -7,6 +7,10 @@ import Courses from './pages/courses/Courses';
 import Contact from './pages/contact/Contact';
 import Footer from './components/footer/Footer';
 import Admin from './pages/admin/Admin';
+import StudentCrud from './pages/about/adminpanel/studentcrud/StudentCrud';
+import FacultyCrud from './pages/about/adminpanel/facultycrud/FacultyCrud';
+import FoundersCrud from './pages/about/adminpanel/founderscrud/FoundersCrud';
+import Text from './pages/about/adminpanel/text/Text';
 
 const App = () => {
   return (
@@ -18,6 +22,11 @@ const App = () => {
         <Route path="/courses" element={<Courses/>} /> 
         <Route path="/contact" element={<Contact/>} /> 
         <Route path="/admin" element={<Admin/>} /> 
+        <Route path="/studentcrud" element={<StudentCrud/>} /> 
+        <Route path="/facultycrud" element={<FacultyCrud/>} /> 
+        <Route path="/founderscrud" element={<FoundersCrud/>} /> 
+        <Route path="/texts" element={<Text/>} /> 
+          
       </Routes>
       <Footer/>
     </Router>

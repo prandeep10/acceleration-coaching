@@ -1,57 +1,102 @@
-import React, { useState } from 'react';
+// Admin.js
+
+import React, { useState, useEffect } from 'react';
+import './Admin.css';
 
 const Admin = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [galleryData, setGalleryData] = useState(
-    JSON.parse(localStorage.getItem('galleryData')) || []
-  );
+  const [images, setImages] = useState([]);
+  const [uploadStatus, setUploadStatus] = useState('');
+  const [deleteStatus, setDeleteStatus] = useState('');
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = async () => {
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/images');
+      if (!response.ok) {
+        throw new Error('Failed to fetch images.');
+      }
+      const data = await response.json();
+      setImages(data);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
   };
 
-  const handleSaveImage = () => {
-    if (!selectedFile) return; // Do not save if no file is selected
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
 
-    // Create a FormData object to send the file to the server
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert('Please select a file.');
+      return;
+    }
+
     const formData = new FormData();
-    formData.append('file', selectedFile);
+    formData.append('image', selectedFile);
 
-    // Fetch request to upload the image to the server
-    fetch('/upload', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the gallery data with the new image URL
-        const newImage = { image_url: data.imageUrl };
-        const updatedGalleryData = [...galleryData, newImage];
-        setGalleryData(updatedGalleryData);
-        localStorage.setItem('galleryData', JSON.stringify(updatedGalleryData));
-        setSelectedFile(null); // Clear the selected file state after saving
-      })
-      .catch((error) => console.error('Error uploading image:', error));
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/images', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed.');
+      }
+
+      setUploadStatus('Upload successful!');
+      fetchImages();
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      setUploadStatus('Upload failed. Please try again.');
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`https://brightcareers-backend.onrender.com/images/${id}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error('Delete failed.');
+      }
+
+      setDeleteStatus('Delete successful!');
+      fetchImages();
+    } catch (error) {
+      console.error('Error deleting image:', error);
+      setDeleteStatus('Delete failed. Please try again.');
+    }
   };
 
   return (
-    <div>
+    <div className="admin-container">
       <h2>Admin Panel</h2>
-      <input type="file" onChange={handleImageUpload} />
-      <button onClick={handleSaveImage}>Save Image</button>
-      <h3>Gallery Data</h3>
-      <ul>
-        {galleryData.map((image, index) => (
-          <li key={index}>
-            <img
-              src={process.env.PUBLIC_URL + '/data/images/' + image.image_url}
-              alt={`Gallery Image ${index + 1}`}
-              style={{ maxWidth: '200px' }}
-            />
-          </li>
-        ))}
-      </ul>
+      <div className="upload-section">
+        <h3>Upload Image</h3>
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleUpload}>Upload</button>
+        {uploadStatus && <p>{uploadStatus}</p>}
+      </div>
+      <div className="images-section">
+        <h3>Images</h3>
+        <div className="image-list">
+          {images.map((image) => (
+            <div key={image.id} className="image-item">
+              <img src={`https://brightcareers-backend.onrender.com/images/${image.filename}`} alt={image.originalname} />
+              <p>{image.originalname}</p>
+              <button onClick={() => handleDelete(image.id)}>Delete</button>
+            </div>
+          ))}
+        </div>
+        {deleteStatus && <p>{deleteStatus}</p>}
+      </div>
     </div>
   );
 };

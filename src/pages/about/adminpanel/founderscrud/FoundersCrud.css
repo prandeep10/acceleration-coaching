@@ -1,0 +1,45 @@
+/* FoundersCrud.css */
+
+.founders-crud-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .add-founder-section {
+    margin-bottom: 20px;
+  }
+  
+  .add-founder-section input[type="text"],
+  .add-founder-section input[type="file"],
+  .add-founder-section button {
+    margin-bottom: 10px;
+  }
+  
+  .founders-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .founders-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .founder {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .founder img {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .founder p {
+    margin-top: 5px;
+  }
+  
+  .founder button {
+    margin-top: 5px;
+  }
+  
