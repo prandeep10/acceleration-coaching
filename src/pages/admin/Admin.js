@@ -17,6 +17,11 @@ const Admin = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+
   if (!isLoggedIn) {
     return (
       <div className="login-container">
@@ -43,6 +48,7 @@ const Admin = () => {
   return (
     <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
+      <button onClick={handleLogout}>Logout</button>
       <div className="cards">
         <a href="/studentcrud" className="card">
           <h2>Student Update</h2>
