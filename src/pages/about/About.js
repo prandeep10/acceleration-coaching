@@ -5,12 +5,17 @@ const About = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [founders, setFounders] = useState([]);
   const [aboutContent, setAboutContent] = useState('');
+  const [apiURLWorking, setApiURLWorking] = useState(true); // Initially assume API is working
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
     fetchGalleryImages();
     fetchFounders();
     fetchAboutContent();
-  }, []);
+  };
 
   const fetchGalleryImages = () => {
     fetch('https://brightcareers-backend.onrender.com/images')
@@ -25,10 +30,23 @@ const About = () => {
       })
       .catch((error) => {
         console.error('Error fetching gallery images:', error);
-        // Handle error here (e.g., show error message to the user)
+        // Fetch images from fallback API
+        fetchGalleryImagesFallback();
       });
   };
-  
+
+  const fetchGalleryImagesFallback = () => {
+    // Fetch images from local directory
+    const fallbackImages = [
+      { id: 1, url: '/about/about1.jpeg' },
+      { id: 2, url: '/about/about2.jpeg' },
+      { id: 3, url: '/about/about3.jpeg' },
+      { id: 4, url: '/about/about4.jpeg' }
+      // Add more fallback images as needed
+    ];
+    setGalleryImages(fallbackImages);
+  };
+
   const fetchFounders = () => {
     fetch('https://brightcareers-backend.onrender.com/founders')
       .then((response) => {
@@ -42,8 +60,19 @@ const About = () => {
       })
       .catch((error) => {
         console.error('Error fetching founders data:', error);
-        // Handle error here (e.g., show error message to the user)
+        // Fetch founders from fallback API
+        fetchFoundersFallback();
       });
+  };
+
+  const fetchFoundersFallback = () => {
+    // Fetch founders from local directory
+    const fallbackFounders = [
+      { id: 1, image: 'founder1.jpeg', name: 'Founder 1', description: 'Description of Founder 1' },
+      { id: 2, image: 'founder2.jpeg', name: 'Founder 2', description: 'Description of Founder 2' }
+      // Add more fallback founders as needed
+    ];
+    setFounders(fallbackFounders);
   };
 
   const fetchAboutContent = () => {
@@ -60,6 +89,45 @@ const About = () => {
       .catch((error) => {
         console.error('Error fetching about content:', error);
         // Handle error here (e.g., show error message to the user)
+        fetchAboutContentFallback();
+      });
+  };
+
+  const fetchAboutContentFallback = () => {
+    // Fetch about content from fallback API
+    fetch('/data/Data.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch about content from fallback API');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setAboutContent(data.about_content);
+      })
+      .catch((error) => {
+        console.error('Error fetching about content from fallback API:', error);
+        setAboutContent('Fallback about content goes here');
+      });
+  };
+
+  useEffect(() => {
+    // Check API status after fetching data
+    checkAPIStatus();
+  }, [galleryImages, founders, aboutContent]);
+
+  const checkAPIStatus = () => {
+    fetch('https://brightcareers-backend.onrender.com/founders') // Try reaching the API endpoint
+      .then((response) => {
+        if (response.ok) {
+          setApiURLWorking(true); // If the API is reachable, set apiURLWorking to true
+        } else {
+          setApiURLWorking(false); // If the API is not reachable, set apiURLWorking to false
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking API status:', error);
+        setApiURLWorking(false); // If there's an error, set apiURLWorking to false
       });
   };
 
@@ -87,7 +155,7 @@ const About = () => {
         <h3>About the Founders</h3>
         {founders.map((founder) => (
           <div key={founder.id} className="founder">
-            <img src={`https://brightcareers-backend.onrender.com/founders/${founder.image}`} alt={`Founder ${founder.id}`} />
+            <img src={apiURLWorking ? `https://brightcareers-backend.onrender.com/founders/${founder.image}` : `/founders/${founder.image}`} alt={`Founder ${founder.id}`} />
             <div className="founder-details">
               <h4>{founder.name}</h4>
               <p>{founder.description}</p>

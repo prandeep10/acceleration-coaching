@@ -22,6 +22,23 @@ const Navbar = () => {
       setContactNumber(data.contact_number);
     } catch (error) {
       console.error('Error fetching contact number:', error);
+      // If primary API fails, fetch contact number from fallback API
+      fetchContactNumberFallback();
+    }
+  };
+
+  const fetchContactNumberFallback = async () => {
+    try {
+      const response = await fetch('/Data/Data.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch contact number from fallback API');
+      }
+      const data = await response.json();
+      setContactNumber(data.contact_number);
+    } catch (error) {
+      console.error('Error fetching contact number from fallback API:', error);
+      // If fallback API fails, set a default contact number
+      setContactNumber('1234567890');
     }
   };
 

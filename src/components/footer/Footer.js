@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import {FaInstagram } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -19,6 +19,8 @@ const Footer = () => {
       setContactNumber(data.contact_number);
     } catch (error) {
       console.error('Error fetching contact number:', error);
+      // If fetching fails, set a fallback contact number
+      setContactNumber('1234567890');
     }
   };
 
@@ -36,14 +38,8 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="#" className="social-icon">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="social-icon">
-              <FaTwitter />
-            </a>
-            <a href="#" className="social-icon">
-              <FaInstagram />
+            <a href="https://www.instagram.com/accelerationcoachingclasses/" className="social-icon" target='_blank'>
+             <FaInstagram />
             </a>
           </div>
         </div>

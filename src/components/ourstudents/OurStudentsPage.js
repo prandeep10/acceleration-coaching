@@ -3,28 +3,26 @@ import './OurStudentsPage.css'; // Import CSS file for custom styling
 
 const OurStudentsPage = () => {
   const [students, setStudents] = useState([]);
+  const [apiUrlWorking, setApiUrlWorking] = useState(true); // Assuming API URL is working by default
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData = () => {
-    fetch('https://brightcareers-backend.onrender.com/students')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch student data');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data && data.length > 0) {
-          setStudents(data);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching student data:', error);
-          setStudents(fallbackData);
-      });
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://brightcareers-backend.onrender.com/students');
+      if (!response.ok) {
+        throw new Error('Failed to fetch student data');
+      }
+      const data = await response.json();
+      setStudents(data);
+      setApiUrlWorking(true); // Set apiUrlWorking to true if fetching is successful
+    } catch (error) {
+      console.error('Error fetching student data:', error);
+      setStudents(fallbackData);
+      setApiUrlWorking(false); // Set apiUrlWorking to false if fetching fails
+    }
   };
 
   // Fallback static data if API request fails
@@ -42,7 +40,7 @@ const OurStudentsPage = () => {
       <div className="students-grid">
         {students.map((student, index) => (
           <div key={index} className="student-card">
-            <img src={`https://brightcareers-backend.onrender.com/students/${student.image}`} alt={student.name} />
+            <img src={`${apiUrlWorking ? 'https://brightcareers-backend.onrender.com' : ''}/students/${student.image}`} alt={student.name} />
             <div className="student-details">
               <h3>{student.name}</h3>
               <p>Percentage: {student.percentage}%</p>
