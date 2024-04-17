@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './StudentCrud.css';
+import { Link } from 'react-router-dom';
 
 const StudentCrud = () => {
   const [students, setStudents] = useState([]);
@@ -76,9 +77,15 @@ const StudentCrud = () => {
     }
   };
 
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    // Redirect to login page or show an error message
+    return <div className='warning'>You are not authorized to access this page. Please <Link to="/admin">log in.</Link></div>;
+  }
+
   return (
     <div className="student-crud-container">
-      <h2>Student CRUD</h2>
+    <div className='back'><Link to="/admin"> Back to Dashboard</Link></div>
+      <h2>Student Update</h2>
       <div className="add-student-section">
         <h3>Add Student</h3>
         <input type="text" name="name" placeholder="Name" onChange={handleChange} />

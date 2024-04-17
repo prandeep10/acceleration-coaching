@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Text.css';
+import { Link } from 'react-router-dom'
 
 const Text = () => {
   const [textData, setTextData] = useState({});
@@ -69,12 +70,18 @@ const Text = () => {
       });
   };
 
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    // Redirect to login page or show an error message
+    return <div className='warning'>You are not authorized to access this page. Please <Link to="/admin">log in.</Link></div>;
+  }
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="text-container">
+     <div className='back'><Link to="/admin"> Back to Dashboard</Link></div>
       <h2>About Us</h2>
       <div className="about-section">
         {isEditing ? (

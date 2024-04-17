@@ -13,3 +13,29 @@ html,body{
   width: 100%;
   overflow-x: hidden;
 }
+
+.warning{
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.521);
+}
+
+.back{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  font-size: 2rem;
+  background: rgba(0, 0, 255, 0.408);
+}
+
+.back a{
+  color: white;
+  text-decoration: none;
+}
+.back a:hover{
+  color: rgb(190, 209, 189);
+  text-decoration: none;
+}

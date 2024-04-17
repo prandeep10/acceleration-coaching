@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './FacultyCrud.css';
+import { Link } from 'react-router-dom';
 
 const FacultyCrud = () => {
   const [faculty, setFaculty] = useState([]);
@@ -76,9 +77,14 @@ const FacultyCrud = () => {
       setDeleteStatus('Delete failed. Please try again.');
     }
   };
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    // Redirect to login page or show an error message
+    return <div className='warning'>You are not authorized to access this page. Please <Link to="/admin">log in.</Link></div>;
+  }
 
   return (
     <div className="faculty-crud-container">
+     <div className='back'><Link to="/admin"> Back to Dashboard</Link></div>
       <h2>Faculty CRUD</h2>
       <div className="add-faculty-section">
         <h3>Add Faculty Member</h3>

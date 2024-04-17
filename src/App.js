@@ -11,6 +11,7 @@ import StudentCrud from './pages/about/adminpanel/studentcrud/StudentCrud';
 import FacultyCrud from './pages/about/adminpanel/facultycrud/FacultyCrud';
 import FoundersCrud from './pages/about/adminpanel/founderscrud/FoundersCrud';
 import Text from './pages/about/adminpanel/text/Text';
+import Gallery from './pages/about/adminpanel/gallery/Gallery';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/facultycrud" element={<FacultyCrud/>} /> 
         <Route path="/founderscrud" element={<FoundersCrud/>} /> 
         <Route path="/texts" element={<Text/>} /> 
+        <Route path="/gallery" element={<Gallery/>} /> 
           
       </Routes>
       <Footer/>

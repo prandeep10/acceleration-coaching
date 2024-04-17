@@ -42,4 +42,10 @@
   .faculty-member button {
     margin-top: 5px;
   }
+
+  .faculty-crud-container h2{
+    text-align: center;
+    padding: 10px;
+    font-size: 2rem;
+  }
   

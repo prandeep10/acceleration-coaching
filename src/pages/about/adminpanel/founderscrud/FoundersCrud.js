@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './FoundersCrud.css';
+import {Link} from 'react-router-dom';
 
 const FoundersCrud = () => {
   const [founders, setFounders] = useState([]);
@@ -76,8 +77,14 @@ const FoundersCrud = () => {
     }
   };
 
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    // Redirect to login page or show an error message
+    return <div className='warning'>You are not authorized to access this page. Please <Link to="/admin">log in.</Link></div>;
+  }
+
   return (
     <div className="founders-crud-container">
+     <div className='back'><Link to="/admin"> Back to Dashboard</Link></div>
       <h2>Founders CRUD</h2>
       <div className="add-founder-section">
         <h3>Add Founder</h3>
