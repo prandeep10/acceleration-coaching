@@ -4,6 +4,7 @@ import AboutSection from '../../components/aboutsection/AboutSection'
 import ClassesSection from '../../components/classes/ClassesSection'
 import OurStudentsPage from '../../components/ourstudents/OurStudentsPage'
 import OurFacultySection from '../../components/ourfaculty/OurFacultySection'
+import Location from '../../components/location/Location'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <AboutSection/>
       <ClassesSection/>
       <OurStudentsPage/>
+      <Location/>
       <OurFacultySection/>
     </>
   )

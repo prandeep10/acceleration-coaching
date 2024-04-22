@@ -89,13 +89,15 @@ const Contact = () => {
           </div>
         )}
         <div className="map-container">
-          <iframe
-            className="map"
-            title="Location"
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2122.2575005064577!2d91.66574255878214!3d26.14079935207817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x374503ac37396f79%3A0x951ab314dd7c50fc!2sJalukbari%2C%20Guwahati%2C%20Assam!5e0!3m2!1sen!2sin!4v1645656653692`}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+        <iframe
+          title="Location Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14092.78829842762!2d91.6717465!3d26.1497118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a45622494c837%3A0xcce60ba9c22d692!2sBright%20Career%20Coaching!5e0!3m2!1sen!2sin!4v1649828475979!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
         </div>
       </div>
     </section>

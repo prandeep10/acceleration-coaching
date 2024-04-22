@@ -68,8 +68,8 @@ const About = () => {
   const fetchFoundersFallback = () => {
     // Fetch founders from local directory
     const fallbackFounders = [
-      { id: 1, image: 'founder1.jpeg', name: 'Founder 1', description: 'Description of Founder 1' },
-      { id: 2, image: 'founder2.jpeg', name: 'Founder 2', description: 'Description of Founder 2' }
+      { id: 1, image: 'founder1.jpeg', name: 'Altaf Hussain', description: 'Altaf Sir, a famous educator for his shortcut mathematical tips and tricks and extraordinary teaching style with 23 years of experience, which is so pleasing that even the most difficult mathematical topics seem like a piece of cake. Despite choosing the job life he chooses this profession just to accelerate young minds and help them to achieve their goals.' },
+      { id: 2, image: 'founder2.jpeg', name: 'H. M. SAJIDUR RAHMAN', description: 'B.Sc in Physics. Experience 3 years in teaching.' }
       // Add more fallback founders as needed
     ];
     setFounders(fallbackFounders);
@@ -138,9 +138,9 @@ const About = () => {
         <p className="about-description">
           {aboutContent}
         </p>
-        <div className="location-section">
+        <div className="locations-section">
           <h3>Our Location</h3>
-          <p>Sundarbari, Jalukbari, Guwahati-13</p>
+          <p>Sundarbari,Jalukbari,Guwahati-13</p>
         </div>
       </div>
       <div className="gallery-section">

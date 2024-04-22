@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <div className="hero-container">
       <div className="hero-content">
-        <h1 className="brand">Bright Career Coaching</h1>
+        <h1 className="brand">Bright Careers Coaching</h1>
         <p className="description">For Classes V - XII (CBSE & SEBA)</p>
       </div>
     </div>

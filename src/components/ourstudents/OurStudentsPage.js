@@ -28,8 +28,8 @@ const OurStudentsPage = () => {
   // Fallback static data if API request fails
   const fallbackData = [
     { name: 'Pranjit Lahkar', percentage: 95, image: 'Pranjit-Lahkar-96.jpeg' },
-    { name: 'Manas Kr. Das', percentage: 94, image: 'Manas-krDas-94.4.jpeg' },
-    { name: 'Princi Sarma', percentage: 94.4, image: 'Princi-Sharma-93.jpeg' },
+    { name: 'Manas Kr. Das', percentage: 94.4, image: 'Manas-krDas-94.4.jpeg' },
+    { name: 'Princi Sarma', percentage: 94, image: 'Princi-Sharma-93.jpeg' },
     { name: 'Hiyashree', percentage: 95.2, image: 'hiyashree.jpeg' },
     // Add more students as needed
   ];

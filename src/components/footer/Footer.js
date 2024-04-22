@@ -20,7 +20,7 @@ const Footer = () => {
     } catch (error) {
       console.error('Error fetching contact number:', error);
       // If fetching fails, set a fallback contact number
-      setContactNumber('1234567890');
+      setContactNumber('+91-9365122778');
     }
   };
 
